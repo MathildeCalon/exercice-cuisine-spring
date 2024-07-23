@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <span th:replace="~{home :: bootstrap}"></span>
+    <title>Erreur 404</title>
+</head>
+<body>
+<div class="container">
+    <p>Oups ! Le contenu ou la page demandée n'existe pas.</p>
+    <a th:href="@{/}"> <div>Retour à l'accueil</div></a>
+</div>
+</body>
+</html>

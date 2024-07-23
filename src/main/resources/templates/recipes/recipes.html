@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <span th:replace="~{home :: bootstrap}"></span>
+    <title>Liste des recettes</title>
+</head>
+<body>
+<div class="container">
+    <h1 class="h1">Liste des recettes</h1>
+    <div th:if="${recipes != null}">
+        <div th:each="r : ${recipes}">
+            <div class="border rounded p-2 m-2">
+                <a th:href="@{/recipes/{id}(id = ${r.getId()})}" class="link-underline-light"> <span
+                        th:text="${r.getName()}"></span></a>
+            </div>
+        </div>
+    </div>
+
+    <div th:if="${recipes == null || recipes.size()<1}">
+        <p>Aucune recette à afficher.</p>
+        <a th:href="@{/addrecipe}">Ajouter une recette</a>
+    </div>
+</div>
+</body>
+</html>

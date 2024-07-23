@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <span th:replace="~{home :: bootstrap}"></span>
+    <title>Liste des catégories</title>
+</head>
+<body>
+<div class="container">
+    <h1 class="h1">Liste des catégories</h1>
+    <div th:if="${categories != null}">
+        <div th:each="c : ${categories}">
+            <div class="border rounded p-2 m-2">
+                <a th:href="@{/categories/{id}(id = ${c.getId()})}" class="link-underline-light"> <span th:text="${c.getName()}"></span></a>
+            </div>
+        </div>
+    </div>
+
+    <div th:if="${categories == null || categories.size()<1}">
+        <p>Aucune catégorie à afficher.</p>
+        <a th:href="@{/addcategory}">Ajouter une catégorie</a>
+    </div>
+</div>
+</body>
+</html>

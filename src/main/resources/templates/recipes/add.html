@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <span th:replace="~{home :: bootstrap}"></span>
+    <title>Ajouter une recette</title>
+</head>
+<body>
+<div class="container">
+    <form method="post" th:action="@{/addrecipe}" th:object="${recipe}" class="mb-3">
+        <div>
+            <label for="name" class="form-label">Nom :</label>
+            <input type="text" id="name" th:field="*{name}" class="form-control">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/>
+        </div>
+
+        <div>
+            <label for="ingredient" class="form-label">Ingrédient :</label>
+            <input type="text" id="ingredient" th:field="*{ingredients}" class="form-control">
+            <span th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}"/>
+        </div>
+
+        <div>
+            <label for="instructions" class="form-label">Instructions :</label>
+            <input type="text" id="instructions" th:field="*{instructions}" class="form-control">
+            <span th:if="${#fields.hasErrors('instructions')}" th:errors="*{instructions}"/>
+        </div>
+
+        <div>
+            <label for="category" class="form-label">Catégorie :</label>
+            <select id="category" th:field="*{category.id}" class="form-control" th:each="c : ${categories}">
+                <option th:value="${c.getId()}"><span th:text="${c.getName()}"/></option>
+                <span th:if="${#fields.hasErrors('category')}" th:errors="*{category}"/>
+            </select>
+        </div>
+        <button class="btn btn-primary">Ajouter</button>
+    </form>
+</div>
+
+</body>
+</html>

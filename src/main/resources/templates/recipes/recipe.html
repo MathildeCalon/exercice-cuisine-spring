@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <span th:replace="~{home :: bootstrap}"></span>
+    <title>Recette</title>
+</head>
+<body>
+<div class="container">
+    <div th:if="${recipe != null}">
+        <h1 class="h1"><span th:text="${recipe.getName()}"/></h1>
+        <ul>
+            <li>Ingrédients :
+                <ul th:each="i : ${recipe.getIngredients()}">
+                    <li><span th:text="${i}"/></li>
+                </ul>
+            <li>Instructions :
+                <p th:text="${recipe.getInstructions()}"></p></li>
+            <li>Catégorie : <span th:text="${recipe.getCategory().getName()}"/> </li>
+        </ul>
+
+        <a th:href="@{/recipes/delete/{id}(id = ${recipe.getId()})}"><div class="btn btn-danger">Supprimer la recette</div></a>
+        <a th:href="@{/recipes/update/{id}(id = ${recipe.getId()})}"><div class="btn btn-warning">Modifier la recette</div></a>
+
+    </div>
+
+    <div th:if="${recipe == null}">
+        <p>La recette demandée n'existe pas.</p>
+    </div>
+
+    <a th:href="@{/}"><div class="btn btn-primary">Accueil</div></a>
+
+
+
+</div>
+</body>
+</html>

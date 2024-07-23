@@ -9,7 +9,8 @@
 <div class="container">
     <form method="post" th:action="@{/updaterecipe}" th:object="${recipe}" class="mb-3">
         <div>
-            <input id="id" th:value="${recipe.getId()}" hidden/>
+            <input name="id" id="id" th:value="${recipe.getId()}" hidden/>
+            <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"/>
         </div>
 
         <div>

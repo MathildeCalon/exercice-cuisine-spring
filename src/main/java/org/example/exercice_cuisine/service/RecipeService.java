@@ -32,7 +32,7 @@ public class RecipeService {
     }
 
     public void updateRecipe(Recipe recipe) {
-        Recipe oldRecipe = recipes.get(recipe.getId());
+        Recipe oldRecipe = getRecipeById(recipe.getId());
         if (oldRecipe != null) {
             oldRecipe.setName(recipe.getName());
             oldRecipe.setIngredients(recipe.getIngredients());

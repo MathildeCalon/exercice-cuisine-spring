@@ -39,4 +39,8 @@ public class CategoryService {
     public void remove(UUID id) {
         categories.remove(id);
     }
+
+    public void update(Category category) {
+        categories.replace(category.getId(), category);
+    }
 }

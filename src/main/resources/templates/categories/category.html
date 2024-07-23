@@ -12,11 +12,10 @@
         <p th:text="${category.getDescription()}"></p>
 
         <a th:href="@{/categories/delete/{id}(id = ${category.getId()})}"><div class="btn btn-danger">Supprimer la catégorie</div></a>
-        <a th:href="@{/update/{id}(id = ${category.getId()})}"><div class="btn btn-warning">Modifier la catégorie</div></a>
+        <a th:href="@{/categories/update/{id}(id = ${category.getId()})}"><div class="btn btn-warning">Modifier la catégorie</div></a>
         <a th:href="@{/}"><div class="btn btn-primary">Accueil</div></a>
 
     </div>
-
 
 
 </div>

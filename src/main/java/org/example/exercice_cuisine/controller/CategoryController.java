@@ -54,4 +54,20 @@ public class CategoryController {
         categoryService.remove(id);
         return "redirect:/categories";
     }
+
+    @GetMapping("/categories/update/{id}")
+    public String update(@PathVariable UUID id, Model model) {
+        model.addAttribute("category", categoryService.findById(id));
+        return "categories/update";
+    }
+
+    @PostMapping("/updatecategory")
+    public String updateCategory(@Valid @ModelAttribute("category") Category category, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            return "categories/update";
+        } else {
+            categoryService.update(category);
+            return "redirect:/categories";
+        }
+    }
 }

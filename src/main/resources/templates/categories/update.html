@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <span th:replace="~{home :: bootstrap}"></span>
-    <title>Ajouter une catégorie</title>
+    <title>Modifier une catégorie</title>
 </head>
 <body>
 <div class="container">
-    <h1 class="h1">Ajouter une catégorie</h1>
-    <form method="post" th:action="@{/addcategory}" th:object="${category}" class="mb-3">
+    <h1 class="h1">Modifier une catégorie</h1>
+    <form method="post" th:action="@{/updatecategory}" th:object="${category}" class="mb-3">
+        <input id="id" name="id" th:value="${category.getId()}" hidden>
+
         <div>
             <label for="name" class="form-label">Nom :</label>
-            <input type="text" id="name" th:field="*{name}" class="form-control" >
+            <input type="text" id="name" th:field="*{name}" class="form-control" th:value="${category.getName()}">
             <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/>
         </div>
         <div>
             <label for="description" class="form-label">Description :</label>
-            <input type="text" id="description" th:field="*{description}" class="form-control" >
+            <input type="text" id="description" th:field="*{description}" class="form-control" th:value="${category.getDescription}">
             <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"/>
         </div>
-        <button class="btn btn-primary">Ajouter</button>
+        <button class="btn btn-primary">Modifier</button>
     </form>
 </div>
 

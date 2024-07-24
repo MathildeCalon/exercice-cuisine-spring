@@ -28,13 +28,14 @@
 
         <div>
             <label for="category" class="form-label">Catégorie :</label>
-            <select id="category" th:field="*{category.id}" class="form-control" th:each="c : ${categories}">
-                <option th:value="${c.getId()}"><span th:text="${c.getName()}"/></option>
+            <select id="category" th:field="*{category.id}" class="form-control">
+                <option th:each="c : ${categories}" th:value="${c.getId()}"><span th:text="${c.getName()}"/></option>
                 <span th:if="${#fields.hasErrors('category')}" th:errors="*{category}"/>
             </select>
         </div>
         <button class="btn btn-primary">Ajouter</button>
     </form>
+    <a th:href="@{/}"><div class="btn btn-primary">Accueil</div></a>
 </div>
 
 </body>
